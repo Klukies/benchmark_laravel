@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  app:
+    container_name: laravel_app
+    build:
+      context: ./
+      dockerfile: docker/laravel/Dockerfile
+    volumes:
+      - .:/var/www
+    env_file: '.env'
+
+  web:
+    container_name: nginx
+    build:
+      context: ./
+      dockerfile: docker/nginx/Dockerfile
+    volumes:
+    - ./storage/logs/:/var/log/nginx
+    ports:
+      - 8000:80
+
+  database:
+    container_name: postgres_database
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: benchmark
+      POSTGRES_PASSWORD: benchmark
+      POSTGRES_DB: benchmark
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8001:8080
