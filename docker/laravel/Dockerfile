@@ -22,8 +22,11 @@ RUN chown -R www-data:www-data \
 
 RUN  apt-get install -y libmcrypt-dev \
         libmagickwand-dev --no-install-recommends \
+        libz-dev \
+        libmcrypt-dev \
         && pecl install mcrypt-1.0.3 \
-        && docker-php-ext-install pdo_mysql \
+        && apt-get -y install libpq-dev \
+        && docker-php-ext-install pdo_pgsql \
         && docker-php-ext-enable mcrypt
 
 RUN php artisan optimize

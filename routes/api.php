@@ -1,7 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\FibonacciController;
+use App\Http\Controllers\Api\CountriesController;
 use App\Http\Controllers\Api\HelloWorldController;
 
 /*
@@ -15,4 +16,11 @@ use App\Http\Controllers\Api\HelloWorldController;
 |
 */
 
+/* Route that returns a Hello World! response */
 Route::get('/', HelloWorldController::class);
+
+/* Route that returns fibonacci numbers from 0-100 */
+Route::get('/fibonacci', FibonacciController::class);
+
+/* Route that returns a listing of all countries in the world */
+Route::get('/countries', CountriesController::class);

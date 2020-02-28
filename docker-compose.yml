@@ -28,9 +28,11 @@ services:
       POSTGRES_USER: benchmark
       POSTGRES_PASSWORD: benchmark
       POSTGRES_DB: benchmark
+    ports:
+      - 8001:5432
 
   adminer:
     image: adminer
     restart: always
     ports:
-      - 8001:8080
+      - 8002:8080
