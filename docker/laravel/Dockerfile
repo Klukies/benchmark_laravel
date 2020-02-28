@@ -6,7 +6,20 @@ COPY database /var/www/database
 
 WORKDIR /var/www
 
-RUN apt-get update && apt-get -y install git && apt-get -y install zip
+RUN apt-get update && apt-get install -y \
+	git \
+	curl \
+	libz-dev \
+	libpq-dev \
+	libicu-dev \
+	libxslt-dev \
+	libmcrypt-dev \
+	libpng-dev \
+	libxml2-dev \
+	libonig-dev \
+	libmagickwand-dev --no-install-recommends \
+	zip \
+	unzip
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
     && php composer-setup.php \
@@ -20,13 +33,6 @@ RUN chown -R www-data:www-data \
         /var/www/storage \
         /var/www/bootstrap/cache
 
-RUN  apt-get install -y libmcrypt-dev \
-        libmagickwand-dev --no-install-recommends \
-        libz-dev \
-        libmcrypt-dev \
-        && pecl install mcrypt-1.0.3 \
-        && apt-get -y install libpq-dev \
-        && docker-php-ext-install pdo_pgsql \
+RUN  pecl install mcrypt-1.0.3 \
+        && docker-php-ext-install opcache mbstring pdo pdo_pgsql \
         && docker-php-ext-enable mcrypt
-
-RUN php artisan optimize
