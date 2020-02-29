@@ -30,9 +30,14 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 COPY . /var/www
 
 RUN chown -R www-data:www-data \
-        /var/www/storage \
-        /var/www/bootstrap/cache
+    /var/www/storage \
+    /var/www/bootstrap/cache
 
 RUN  pecl install mcrypt-1.0.3 \
-        && docker-php-ext-install opcache mbstring pdo pdo_pgsql \
-        && docker-php-ext-enable mcrypt
+    && docker-php-ext-install opcache mbstring pdo pdo_pgsql \
+    && docker-php-ext-enable mcrypt
+
+ENTRYPOINT php artisan key:generate \
+    && php artisan config:cache \
+    && php artisan migrate:fresh --seed \
+    && docker-php-entrypoint php-fpm
