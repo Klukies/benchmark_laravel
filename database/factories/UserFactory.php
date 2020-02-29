@@ -1,9 +1,11 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+/** @var Factory $factory */
 
+use App\Country;
 use App\User;
 use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Support\Str;
 
 /*
@@ -25,4 +27,12 @@ $factory->define(User::class, function (Faker $faker) {
         'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
         'remember_token' => Str::random(10),
     ];
+});
+
+$countries = Country::all();
+$factory->afterCreating(User::class, function (User $user, Faker $faker) use ($countries) {
+    $user->countries()->attach(rand(1, 5));
+    if ($faker->boolean(25)) {
+        $user->countries()->attach(Country::where('name', 'Belgium')->first()->id);
+    }
 });
