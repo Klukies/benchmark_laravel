@@ -22,6 +22,6 @@ class UserController
     {
         return User::whereHas('countries', function (Builder $query) use ($country) {
             $query->where('name', $country);
-        })->with('countries')->get();
+        })->with('countries')->orderBy('users.id')->get();
     }
 }

@@ -20,7 +20,7 @@ use App\Http\Controllers\Api\HelloWorldController;
 /* Route that returns a Hello World! response */
 Route::get('/', HelloWorldController::class);
 
-/* Route that returns fibonacci numbers from 0-100 */
+/* Route that returns fibonacci numbers from 0-1000 */
 Route::get('/fibonacci', FibonacciController::class);
 
 /* Route that returns a listing of all countries in the world */
