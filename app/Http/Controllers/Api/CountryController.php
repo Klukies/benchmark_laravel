@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Country;
 
-class CountriesController
+class CountryController
 {
     public function __invoke()
     {
