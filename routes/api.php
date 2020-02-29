@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FibonacciController;
-use App\Http\Controllers\Api\CountriesController;
+use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\HelloWorldController;
 
 /*
@@ -23,4 +24,8 @@ Route::get('/', HelloWorldController::class);
 Route::get('/fibonacci', FibonacciController::class);
 
 /* Route that returns a listing of all countries in the world */
-Route::get('/countries', CountriesController::class);
+Route::get('/countries', CountryController::class);
+
+/* Route that returns a listing of all users that have visited Belgium */
+Route::get('/users', UserController::class);
+
