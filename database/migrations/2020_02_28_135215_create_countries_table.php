@@ -6,12 +6,8 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateCountriesTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    /* Run the migrations. */
+    public function up(): void
     {
         Schema::create('countries', function (Blueprint $table) {
             $table->bigIncrements('id');
@@ -20,12 +16,8 @@ class CreateCountriesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    /* Reverse the migrations. */
+    public function down(): void
     {
         Schema::dropIfExists('countries');
     }

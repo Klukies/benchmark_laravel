@@ -5,12 +5,7 @@ use Illuminate\Support\Facades\DB;
 
 class CountriesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
+    public function run(): void
     {
         $countries = array(
             array('code' => 'US', 'name' => 'United States'),
