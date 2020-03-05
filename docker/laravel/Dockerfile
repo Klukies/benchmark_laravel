@@ -39,5 +39,6 @@ RUN  pecl install mcrypt-1.0.3 \
 
 ENTRYPOINT php artisan key:generate \
     && php artisan config:cache \
-    && php artisan migrate:fresh --seed \
-    && docker-php-entrypoint php-fpm
+    && php artisan migrate:fresh
+
+CMD docker-php-entrypoint php-fpm
