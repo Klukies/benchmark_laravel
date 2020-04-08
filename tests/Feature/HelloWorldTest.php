@@ -6,12 +6,8 @@ use Tests\TestCase;
 
 class HelloWorldTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
+    /** @test */
+    public function testBasicTest(): void
     {
         $response = $this->get('api');
 
