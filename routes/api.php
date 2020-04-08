@@ -33,3 +33,6 @@ Route::get('/users', UserController::class);
 
 /* Route that requires an institution */
 Route::get('/middleware', UserController::class)->middleware('hasInstitution');
+
+/* Route that will validate the request */
+Route::get('/validation', ValidatesCountryController::class);
