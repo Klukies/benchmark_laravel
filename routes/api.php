@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\FibonacciController;
 use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\HelloWorldController;
+use App\Http\Controllers\Api\ValidatesCountryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,7 @@ use App\Http\Controllers\Api\HelloWorldController;
 */
 
 /* Route that returns a Hello World! response */
+
 Route::get('/', HelloWorldController::class);
 
 /* Route that returns fibonacci numbers from 0-1000 */
@@ -29,3 +31,5 @@ Route::get('/countries', CountryController::class);
 /* Route that returns a listing of all users that have visited Belgium */
 Route::get('/users', UserController::class);
 
+/* Route that requires an institution */
+Route::get('/middleware', UserController::class)->middleware('hasInstitution');
