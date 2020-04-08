@@ -8,6 +8,6 @@ class CountryController
 {
     public function __invoke()
     {
-        return response()->json(Country::all());
+        return response()->json(['countries' => Country::all()]);
     }
 }

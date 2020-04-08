@@ -10,9 +10,9 @@ class ValidatesCountryController
 {
     public function __invoke(CountryRequest $countryRequest)
     {
-        $validated = $countryRequest->validate();
-        $countries = Country::whereIn('name', $validated['countries']);
+        $validated = $countryRequest->validated();
+        $countries = Country::whereIn('name', $validated['countries'])->get();
 
-        return response()->json($countries);
+        return response()->json(['countries' => $countries]);
     }
 }
