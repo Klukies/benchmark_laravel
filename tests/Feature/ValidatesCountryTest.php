@@ -12,7 +12,7 @@ class ValidatesCountryTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function it_can_receive_countries()
+    public function it_can_receive_countries(): void
     {
         $this->seed();
         $expected = Country::whereIn('name', ['Belgium', 'France'])
@@ -27,7 +27,7 @@ class ValidatesCountryTest extends TestCase
     }
 
     /** @test */
-    public function it_will_have_errors_if_the_request_has_no_countries()
+    public function it_will_have_errors_if_the_request_has_no_countries(): void
     {
         $this->seed();
         $response = $this->get('/api/validation');

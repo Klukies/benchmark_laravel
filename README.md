@@ -1,7 +1,5 @@
 # Laravel Benchmark
 
-[![Coverage Status](https://coveralls.io/repos/github/LukasCornille/benchmark_laravel/badge.svg?branch=master)](https://coveralls.io/github/LukasCornille/benchmark_laravel?branch=master)
-
 ## Requirements
 
 -   Docker for desktop
