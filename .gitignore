@@ -12,3 +12,4 @@ npm-debug.
 .php_cs.cache
 yarn-error.log
 .idea/*
+/reports/*
